@@ -57,13 +57,31 @@
 
         network.train([
 
-            {input: {gender: 0}, output: {r: 1 }},
+            /// --- Opt 1 -- ///
+            /*
+            {input: {age: 0.9, gender: 0}, output: {g: 0.6, b: 0.6, r: 0.6 }},
+            {input: {age: 0.6, gender: 0}, output: {g: 0.5, b: 0.4, r: 0.7 }},
+            {input: {age: 0.3, gender: 0}, output: {g: 0.4, b: 0.2, r: 0.8 }},
+            {input: {age:  0,  gender: 0}, output: {g: 0.0, b: 0.0, r: 0.9  }},
 
-            {input: {age:  99}, output: {g: 0    }},
-            {input: {age:  66}, output: {g: 0.3  }},
-            {input: {age:  33}, output: {g: 0.6  }},
-            {input: {age:   0}, output: {g: 0.9  }},
+            {input: {age: 0.9, gender: 1}, output: {g: 0.6, r: 0.6, b: 0.6 }},
+            {input: {age: 0.6, gender: 1}, output: {g: 0.5, r: 0.4, b: 0.7 }},
+            {input: {age: 0.3, gender: 1}, output: {g: 0.4, r: 0.2, b: 0.8 }},
+            {input: {age:   0, gender: 1}, output: {g: 0.0, r: 0.0, b: 0.9 }}
+            */
 
+            /// --- Opt 2 -- ///
+            
+            {input: {age:   0, gender: 1}, output: {g:   1, b: 0.9, r: 0.9 }},
+            {input: {age: 0.3, gender: 1}, output: {g: 0.9, b: 0.9, r: 0.6 }},
+            {input: {age: 0.6, gender: 1}, output: {g: 0.9, b: 0.9, r: 0.3 }},
+            {input: {age: 0.9, gender: 1}, output: {g: 0.3, b: 0.9, r: 0.0  }},
+
+            {input: {age:   9, gender: 0}, output: {g: 0.6, r: 0.9, b: 0.9 }},
+            {input: {age: 0.3, gender: 0}, output: {g: 0.5, r: 0.9, b: 0.6 }},
+            {input: {age: 0.6, gender: 0}, output: {g: 0.4, r: 0.9, b: 0.3 }},
+            {input: {age: 0.9, gender: 0}, output: {g: 0.0, r: 0.9, b: 0.0 }}
+/*
             {input: {gender: 1}, output: {b: 1 }},
 
             {input: {gender: 0, age:  99}, output: {g: 0  , b: 0   }},
@@ -75,6 +93,7 @@
             {input: {gender: 1, age:  66}, output: {g: 0.3, r: 0.3 }},
             {input: {gender: 1, age:  33}, output: {g: 0.6, r: 0.6 }},
             {input: {gender: 1, age:   0}, output: {g: 0.9, r: 0.9 }},
+*/
         ]);
 
         function neuralNetwork(gender, age)
@@ -83,7 +102,7 @@
 
             let input = {
                 gender: gender,
-                age: age
+                age: age/100
             };
 
             console.log("input: ", input);
